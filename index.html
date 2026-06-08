@@ -354,6 +354,158 @@
         margin-top: 8px;
       }
 
+      .project-grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .project-card {
+        background: var(--surface);
+        border-radius: 8px;
+        padding: 16px;
+        position: relative;
+        transition: background 160ms ease, box-shadow 160ms ease,
+          transform 160ms ease;
+      }
+
+      .project-card:hover {
+        background: var(--surface-hover);
+        box-shadow: var(--shadow-medium);
+        transform: translateY(-2px);
+      }
+
+      .project-cover {
+        aspect-ratio: 1;
+        border-radius: 6px;
+        box-shadow: var(--shadow-heavy);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 14px;
+        overflow: hidden;
+        padding: 16px;
+        position: relative;
+      }
+
+      .project-cover.oop {
+        background: linear-gradient(
+          135deg,
+          #272727 0%,
+          #181818 55%,
+          #10241a 100%
+        );
+      }
+
+      .project-cover.hsd {
+        background: linear-gradient(
+          135deg,
+          #252525 0%,
+          #181818 54%,
+          #102032 100%
+        );
+      }
+
+      .project-cover::before,
+      .project-cover::after {
+        background: rgba(255, 255, 255, 0.12);
+        content: "";
+        display: block;
+        height: 1px;
+        left: 16px;
+        position: absolute;
+        right: 16px;
+      }
+
+      .project-cover::before {
+        top: 42%;
+      }
+
+      .project-cover::after {
+        top: 58%;
+      }
+
+      .project-code {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.75rem;
+        font-weight: 700;
+        line-height: 1.5;
+        position: relative;
+        z-index: 1;
+      }
+
+      .project-code span {
+        display: block;
+      }
+
+      .project-initials {
+        align-self: flex-start;
+        color: var(--text);
+        font-size: 2.15rem;
+        font-weight: 700;
+        line-height: 1;
+        position: relative;
+        z-index: 1;
+      }
+
+      .project-action {
+        align-items: center;
+        background: var(--accent);
+        border-radius: 50%;
+        bottom: 14px;
+        box-shadow: var(--shadow-heavy);
+        color: #000000;
+        display: inline-flex;
+        font-size: 1rem;
+        font-weight: 700;
+        height: 44px;
+        justify-content: center;
+        opacity: 0;
+        position: absolute;
+        right: 14px;
+        transform: translateY(8px);
+        transition: opacity 160ms ease, transform 160ms ease,
+          background 160ms ease;
+        width: 44px;
+        z-index: 2;
+      }
+
+      .project-card:hover .project-action,
+      .project-action:focus-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .project-action:hover {
+        background: var(--accent-pressed);
+        color: #000000;
+      }
+
+      .project-card h3 {
+        margin-bottom: 6px;
+      }
+
+      .project-card p {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 12px;
+      }
+
+      .project-tags span {
+        background: var(--surface-raised);
+        border-radius: 9999px;
+        color: var(--muted-strong);
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 5px 9px;
+      }
+
       .tag {
         color: var(--muted);
         display: block;
@@ -583,6 +735,7 @@
         }
 
         .card-grid,
+        .project-grid,
         .skill-grid,
         .contact-links {
           grid-template-columns: 1fr;
@@ -764,22 +917,62 @@
               <h2 id="projects-title">Projects</h2>
               <p>Course projects that shaped my systems practice.</p>
             </div>
-            <div class="card-grid">
-              <article class="card">
+            <div class="project-grid">
+              <article class="project-card">
+                <div class="project-cover oop">
+                  <div class="project-code" aria-hidden="true">
+                    <span>class Project</span>
+                    <span>interface Design</span>
+                    <span>object Model</span>
+                  </div>
+                  <strong class="project-initials">OOP</strong>
+                  <a
+                    class="project-action"
+                    href="cv.html#projects-title"
+                    aria-label="View Object-Oriented Programming project details"
+                  >
+                    <span aria-hidden="true">&gt;</span>
+                  </a>
+                </div>
                 <span class="tag">OOP course</span>
                 <h3>Object-Oriented Programming Project</h3>
                 <p>
                   Course project focused on object modeling, responsibility
                   boundaries, and maintainable implementation.
                 </p>
+                <div class="project-tags" aria-label="Project tags">
+                  <span>Java</span>
+                  <span>OOP</span>
+                  <span>Design</span>
+                </div>
               </article>
-              <article class="card">
+              <article class="project-card">
+                <div class="project-cover hsd">
+                  <div class="project-code" aria-hidden="true">
+                    <span>fsm.next()</span>
+                    <span>datapath.tick</span>
+                    <span>hdl.module</span>
+                  </div>
+                  <strong class="project-initials">HSD</strong>
+                  <a
+                    class="project-action"
+                    href="cv.html#projects-title"
+                    aria-label="View Hardware System Design project details"
+                  >
+                    <span aria-hidden="true">&gt;</span>
+                  </a>
+                </div>
                 <span class="tag">HSD course</span>
                 <h3>Hardware / System Design Project</h3>
                 <p>
                   Course project connected to digital logic, finite-state
                   machines, datapath thinking, and HDL-oriented design.
                 </p>
+                <div class="project-tags" aria-label="Project tags">
+                  <span>HDL</span>
+                  <span>FSM</span>
+                  <span>Datapath</span>
+                </div>
               </article>
             </div>
           </section>
@@ -861,12 +1054,9 @@
               <article class="track" role="listitem">
                 <span class="track-number">2</span>
                 <div>
-                  <div class="track-title">Prompt summary</div>
+                  <div class="track-title">Prompt</div>
                   <div class="track-subtitle">
-                    Build a simple responsive personal website, use the profile
-                    image and CV, fix Markdown encoding with a UTF-8 CV page,
-                    apply the Spotify-inspired design system, and add projects,
-                    next courses, and this AI usage disclosure.
+                    project cards를 album-style로 바꿔
                   </div>
                 </div>
                 <span class="track-meta">Prompt</span>
