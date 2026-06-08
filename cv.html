@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="CV for Ryu Dongwoo, a computer science undergraduate focused on low-level systems."
+    />
+    <title>CV | Ryu Dongwoo</title>
+    <style>
+      :root {
+        --bg: #f8faf9;
+        --surface: #ffffff;
+        --text: #15211e;
+        --muted: #596964;
+        --line: #d7e1de;
+        --accent: #087f76;
+        --accent-strong: #075e57;
+        --accent-warm: #b6462f;
+        --max-width: 860px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--accent-strong);
+        text-decoration-thickness: 0.09em;
+        text-underline-offset: 0.2em;
+      }
+
+      a:hover {
+        color: var(--accent-warm);
+      }
+
+      a:focus-visible {
+        outline: 3px solid rgba(8, 127, 118, 0.35);
+        outline-offset: 4px;
+        border-radius: 6px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: 1rem;
+        top: 1rem;
+        transform: translateY(-160%);
+        background: var(--text);
+        color: #ffffff;
+        padding: 0.65rem 0.85rem;
+        text-decoration: none;
+      }
+
+      .skip-link:focus {
+        transform: translateY(0);
+      }
+
+      .page {
+        margin: 0 auto;
+        max-width: var(--max-width);
+        padding: 2rem 1.25rem 3rem;
+      }
+
+      .top-nav {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+      }
+
+      .top-nav a {
+        font-weight: 800;
+      }
+
+      header {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 1.4rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        font-size: 3rem;
+        letter-spacing: 0;
+        line-height: 1;
+        margin-bottom: 0.75rem;
+      }
+
+      h2 {
+        border-bottom: 1px solid var(--line);
+        font-size: 1.45rem;
+        letter-spacing: 0;
+        line-height: 1.25;
+        margin-bottom: 1rem;
+        padding-bottom: 0.45rem;
+      }
+
+      h3 {
+        font-size: 1rem;
+        line-height: 1.35;
+        margin-bottom: 0.25rem;
+      }
+
+      .summary {
+        color: var(--muted);
+        font-size: 1.12rem;
+        margin-bottom: 0;
+      }
+
+      .contact {
+        color: var(--muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.75rem;
+        list-style: none;
+        margin: 1rem 0 0;
+        padding: 0;
+      }
+
+      section {
+        margin-top: 2rem;
+      }
+
+      ul {
+        margin: 0;
+        padding-left: 1.2rem;
+      }
+
+      li + li {
+        margin-top: 0.35rem;
+      }
+
+      .item {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 1rem;
+      }
+
+      .item + .item {
+        margin-top: 0.9rem;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .footer-links {
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1rem;
+        margin-top: 2rem;
+        padding-top: 1rem;
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding-top: 1.25rem;
+        }
+
+        h1 {
+          font-size: 2.35rem;
+        }
+
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        .summary {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <main class="page" id="main">
+      <nav class="top-nav" aria-label="CV navigation">
+        <a href="index.html">Back to home</a>
+        <a href="assets/cv.md">Raw Markdown CV</a>
+      </nav>
+
+      <header>
+        <h1>Ryu Dongwoo</h1>
+        <p class="summary">
+          Computer Science undergraduate focused on low-level systems:
+          computer architecture, operating systems, compilers, and
+          graphics/rendering.
+        </p>
+        <ul class="contact" aria-label="Contact details">
+          <li>South Korea</li>
+          <li><a href="mailto:yudongu0521@gmail.com">yudongu0521@gmail.com</a></li>
+          <li><a href="https://github.com/deserted335">github.com/deserted335</a></li>
+        </ul>
+      </header>
+
+      <section aria-labelledby="about-title">
+        <h2 id="about-title">About</h2>
+        <p>
+          I am a CS undergraduate building toward deep systems expertise,
+          working from the metal up through HDL and processor datapaths,
+          operating-system internals, compilers, and rendering. I care about
+          understanding how things work beneath the abstraction, and I prefer
+          practice over theory: small, hands-on implementations over passive
+          reading. Completed mandatory military service.
+        </p>
+        <p>
+          <strong>Long-term direction:</strong> graphics/rendering engineering
+          and kernel-level systems work.
+        </p>
+      </section>
+
+      <section aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        <article class="item">
+          <h3>Undergraduate in Computer Science</h3>
+          <p class="muted">Seoul National University, 2022-2028</p>
+          <p>
+            <strong>Relevant coursework:</strong> Computer Architecture,
+            Algorithms, Object-Oriented Programming, Digital / Hardware Design,
+            ML Systems &amp; Hardware Accelerators, Physics.
+          </p>
+        </article>
+      </section>
+
+      <section aria-labelledby="skills-title">
+        <h2 id="skills-title">Skills</h2>
+        <div class="item">
+          <ul>
+            <li><strong>Languages:</strong> C++, Java, Python, C for systems work, Scheme.</li>
+            <li><strong>Hardware / HDL:</strong> Amaranth HDL, digital logic, FSM and datapath design.</li>
+            <li><strong>Systems &amp; Tools:</strong> Linux, Arch, Neovim, Git, Unity.</li>
+            <li><strong>Currently learning:</strong> OS internals with xv6, compilers through Crafting Interpreters, SICP.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section aria-labelledby="projects-title">
+        <h2 id="projects-title">Projects</h2>
+        <p class="muted">
+          Project details can be added here as the CV is updated.
+        </p>
+      </section>
+
+      <section aria-labelledby="activities-title">
+        <h2 id="activities-title">Activities</h2>
+        <p class="muted">
+          Activity details can be added here as the CV is updated.
+        </p>
+      </section>
+
+      <section aria-labelledby="interests-title">
+        <h2 id="interests-title">Interests</h2>
+        <p>
+          Beyond software: judo and wrestling, classical Greek tragedy and
+          continental philosophy, and Vocaloid music composition.
+        </p>
+      </section>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="assets/cv.md">Raw Markdown source</a>
+      </div>
+    </main>
+  </body>
+</html>
