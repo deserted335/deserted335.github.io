@@ -10,17 +10,24 @@
     <title>Ryu Dongwoo</title>
     <style>
       :root {
-        --bg: #f8faf9;
-        --surface: #ffffff;
-        --surface-muted: #eef6f4;
-        --text: #15211e;
-        --muted: #596964;
-        --line: #d7e1de;
-        --accent: #087f76;
-        --accent-strong: #075e57;
-        --accent-warm: #b6462f;
-        --shadow: 0 18px 45px rgba(15, 35, 30, 0.1);
-        --max-width: 1080px;
+        --bg: #121212;
+        --surface: #181818;
+        --surface-raised: #1f1f1f;
+        --surface-hover: #252525;
+        --text: #ffffff;
+        --text-soft: #fdfdfd;
+        --muted: #b3b3b3;
+        --muted-strong: #cbcbcb;
+        --line: #4d4d4d;
+        --accent: #1ed760;
+        --accent-pressed: #1db954;
+        --shadow-heavy: rgba(0, 0, 0, 0.5) 0 8px 24px;
+        --shadow-medium: rgba(0, 0, 0, 0.3) 0 8px 8px;
+        --max-width: 1180px;
+        --font-stack: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr,
+          CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue",
+          helvetica, arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+          Meiryo, "MS Gothic", sans-serif;
       }
 
       * {
@@ -35,10 +42,10 @@
         margin: 0;
         background: var(--bg);
         color: var(--text);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: var(--font-stack);
         font-size: 16px;
-        line-height: 1.6;
+        line-height: 1.45;
+        padding-bottom: 80px;
       }
 
       img {
@@ -47,354 +54,562 @@
       }
 
       a {
-        color: var(--accent-strong);
-        text-decoration-thickness: 0.09em;
-        text-underline-offset: 0.2em;
+        color: var(--text);
+        text-decoration: none;
       }
 
       a:hover {
-        color: var(--accent-warm);
+        color: var(--accent);
       }
 
-      a:focus-visible,
-      button:focus-visible {
-        outline: 3px solid rgba(8, 127, 118, 0.35);
-        outline-offset: 4px;
-        border-radius: 6px;
+      a:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 9999px;
+      }
+
+      p {
+        color: var(--muted);
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--text-soft);
+        letter-spacing: 0;
+        line-height: 1.1;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 4.25rem;
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 700;
       }
 
       .skip-link {
         position: absolute;
-        left: 1rem;
-        top: 1rem;
-        z-index: 10;
-        transform: translateY(-160%);
-        background: var(--text);
-        color: #ffffff;
-        padding: 0.65rem 0.85rem;
-        text-decoration: none;
+        left: 16px;
+        top: 16px;
+        z-index: 20;
+        transform: translateY(-150%);
+        background: var(--accent);
+        color: #000000;
+        font-size: 0.88rem;
+        font-weight: 700;
+        padding: 8px 16px;
+        text-transform: uppercase;
+        letter-spacing: 1.6px;
       }
 
       .skip-link:focus {
         transform: translateY(0);
       }
 
-      .site-header {
-        border-bottom: 1px solid var(--line);
-        background: rgba(248, 250, 249, 0.92);
-        position: sticky;
-        top: 0;
-        z-index: 5;
-        backdrop-filter: blur(12px);
+      .app-shell {
+        display: grid;
+        grid-template-columns: 248px minmax(0, 1fr);
+        min-height: calc(100vh - 80px);
       }
 
-      .nav {
-        align-items: center;
+      .sidebar {
+        background: #000000;
+        border-right: 1px solid rgba(255, 255, 255, 0.06);
         display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        margin: 0 auto;
-        max-width: var(--max-width);
-        padding: 0.85rem 1.25rem;
+        flex-direction: column;
+        gap: 24px;
+        padding: 20px 14px;
+        position: sticky;
+        top: 0;
+        height: calc(100vh - 80px);
       }
 
       .brand {
-        color: var(--text);
-        font-weight: 800;
-        letter-spacing: 0;
-        text-decoration: none;
-      }
-
-      .nav-links {
+        align-items: center;
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.35rem 0.9rem;
-        justify-content: flex-end;
+        gap: 10px;
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 4px 8px;
       }
 
-      .nav-links a {
+      .brand-mark {
+        align-items: center;
+        background: var(--accent);
+        border-radius: 50%;
+        color: #000000;
+        display: inline-flex;
+        flex: 0 0 auto;
+        font-size: 0.8rem;
+        font-weight: 700;
+        height: 32px;
+        justify-content: center;
+        width: 32px;
+      }
+
+      .nav-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-list a {
+        border-radius: 9999px;
         color: var(--muted);
-        font-size: 0.95rem;
-        font-weight: 650;
-        text-decoration: none;
+        display: block;
+        font-size: 0.88rem;
+        font-weight: 700;
+        padding: 10px 14px;
       }
 
-      .nav-links a:hover {
-        color: var(--accent-strong);
+      .nav-list a:hover,
+      .nav-list a[aria-current="page"] {
+        background: var(--surface-raised);
+        color: var(--text);
+      }
+
+      .sidebar-note {
+        background: var(--surface);
+        border-radius: 8px;
+        box-shadow: var(--shadow-medium);
+        margin-top: auto;
+        padding: 14px;
+      }
+
+      .sidebar-note strong {
+        color: var(--text);
+        display: block;
+        font-size: 0.88rem;
+        margin-bottom: 6px;
+      }
+
+      .sidebar-note span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.75rem;
+        line-height: 1.5;
       }
 
       main {
+        background: var(--bg);
         overflow: hidden;
       }
 
-      .hero {
+      .content {
         margin: 0 auto;
         max-width: var(--max-width);
-        padding: 4.4rem 1.25rem 3rem;
+        padding: 24px;
       }
 
-      .hero-grid {
-        align-items: center;
+      .hero {
+        align-items: end;
+        background: var(--surface);
+        border-radius: 8px;
+        box-shadow: var(--shadow-heavy);
         display: grid;
-        gap: 2.5rem;
-        grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+        gap: 24px;
+        grid-template-columns: 232px minmax(0, 1fr);
+        min-height: 316px;
+        padding: 24px;
+      }
+
+      .profile-art {
+        aspect-ratio: 1;
+        border-radius: 6px;
+        box-shadow: var(--shadow-heavy);
+        object-fit: cover;
+        width: 100%;
       }
 
       .eyebrow {
-        color: var(--accent-strong);
-        font-size: 0.82rem;
-        font-weight: 800;
-        margin: 0 0 0.8rem;
+        color: var(--text);
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 10px;
         text-transform: uppercase;
       }
 
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
-      }
-
-      h1 {
-        font-size: 5.2rem;
-        letter-spacing: 0;
-        line-height: 0.95;
-        margin-bottom: 1.2rem;
-      }
-
-      h2 {
-        font-size: 2.15rem;
-        letter-spacing: 0;
-        line-height: 1.1;
-        margin-bottom: 0.8rem;
-      }
-
-      h3 {
-        font-size: 1.05rem;
-        line-height: 1.3;
-        margin-bottom: 0.45rem;
-      }
-
       .lead {
+        color: var(--muted-strong);
+        font-size: 1rem;
+        font-weight: 400;
+        max-width: 740px;
+        margin-top: 16px;
+      }
+
+      .meta-row {
         color: var(--muted);
-        font-size: 1.28rem;
-        max-width: 66ch;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 10px;
+        font-size: 0.88rem;
+        font-weight: 400;
+        margin-top: 14px;
+      }
+
+      .meta-row strong {
+        color: var(--text);
+        font-weight: 700;
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-top: 1.6rem;
+        gap: 12px;
+        margin-top: 20px;
       }
 
       .button {
         align-items: center;
-        border: 1px solid var(--accent);
-        border-radius: 8px;
+        border-radius: 9999px;
         display: inline-flex;
-        font-weight: 800;
+        font-size: 0.88rem;
+        font-weight: 700;
         justify-content: center;
+        letter-spacing: 1.6px;
         min-height: 44px;
-        padding: 0.7rem 1rem;
-        text-decoration: none;
+        padding: 8px 18px;
+        text-transform: uppercase;
       }
 
       .button.primary {
         background: var(--accent);
-        color: #ffffff;
+        color: #000000;
       }
 
       .button.primary:hover {
-        background: var(--accent-strong);
-        color: #ffffff;
+        background: var(--accent-pressed);
+        color: #000000;
+        transform: translateY(-1px);
       }
 
       .button.secondary {
         background: transparent;
-        color: var(--accent-strong);
+        box-shadow: #7c7c7c 0 0 0 1px inset;
+        color: var(--text);
       }
 
       .button.secondary:hover {
-        border-color: var(--accent-warm);
-        color: var(--accent-warm);
-      }
-
-      .profile-panel {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        box-shadow: var(--shadow);
-        overflow: hidden;
-      }
-
-      .profile-panel img {
-        aspect-ratio: 1;
-        height: auto;
-        object-fit: cover;
-        width: 100%;
-      }
-
-      .profile-meta {
-        padding: 1rem;
-      }
-
-      .profile-meta p {
-        color: var(--muted);
-        margin-bottom: 0.35rem;
+        box-shadow: var(--text) 0 0 0 1px inset;
+        color: var(--text);
+        transform: translateY(-1px);
       }
 
       .section {
-        border-top: 1px solid var(--line);
-        padding: 3.2rem 1.25rem;
+        margin-top: 24px;
       }
 
-      .section:nth-of-type(even) {
-        background: var(--surface);
+      .section-head {
+        align-items: end;
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+        margin-bottom: 12px;
       }
 
-      .section-inner {
-        margin: 0 auto;
-        max-width: var(--max-width);
+      .section-head p {
+        font-size: 0.88rem;
       }
 
-      .section-heading {
+      .card-grid {
         display: grid;
-        gap: 1rem;
-        grid-template-columns: minmax(160px, 0.32fr) minmax(0, 0.68fr);
-        margin-bottom: 1.8rem;
-      }
-
-      .section-heading p {
-        color: var(--muted);
-        margin-bottom: 0;
-      }
-
-      .two-column {
-        display: grid;
-        gap: 1rem;
+        gap: 16px;
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .item,
-      .resume-panel {
-        border: 1px solid var(--line);
-        border-radius: 8px;
+      .card,
+      .resume-row,
+      .track-list {
         background: var(--surface);
-        padding: 1.1rem;
-      }
-
-      .section:nth-of-type(even) .item,
-      .section:nth-of-type(even) .resume-panel {
-        background: var(--bg);
-      }
-
-      .item p:last-child,
-      .resume-panel p:last-child {
-        margin-bottom: 0;
-      }
-
-      .muted {
-        color: var(--muted);
-      }
-
-      .skill-list,
-      .contact-list {
-        display: grid;
-        gap: 0.8rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      .skill-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .skill-list li {
-        background: var(--surface-muted);
-        border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 0.95rem;
+        box-shadow: none;
       }
 
-      .skill-list strong {
+      .card {
+        min-height: 140px;
+        padding: 16px;
+        transition: background 160ms ease, box-shadow 160ms ease,
+          transform 160ms ease;
+      }
+
+      .card:hover {
+        background: var(--surface-hover);
+        box-shadow: var(--shadow-medium);
+        transform: translateY(-2px);
+      }
+
+      .card p {
+        font-size: 0.88rem;
+        margin-top: 8px;
+      }
+
+      .tag {
+        color: var(--muted);
         display: block;
-        margin-bottom: 0.25rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        text-transform: uppercase;
       }
 
-      .contact-list a {
-        font-weight: 800;
+      .track-list {
+        padding: 8px;
       }
 
-      .resume-panel {
+      .track {
+        align-items: center;
+        border-radius: 6px;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 32px minmax(0, 1fr) auto;
+        padding: 10px 12px;
+      }
+
+      .track:hover {
+        background: var(--surface-hover);
+      }
+
+      .track-number {
+        color: var(--muted);
+        font-size: 0.88rem;
+        text-align: center;
+      }
+
+      .track-title {
+        color: var(--text);
+        font-size: 0.95rem;
+        font-weight: 700;
+      }
+
+      .track-subtitle,
+      .track-meta {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      .skill-grid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .skill-card {
+        background: var(--surface);
+        border-radius: 8px;
+        min-height: 124px;
+        padding: 14px;
+        transition: background 160ms ease;
+      }
+
+      .skill-card:hover {
+        background: var(--surface-hover);
+      }
+
+      .skill-card strong {
+        color: var(--text);
+        display: block;
+        font-size: 0.88rem;
+        margin-bottom: 8px;
+      }
+
+      .skill-card span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.88rem;
+      }
+
+      .resume-row {
         align-items: center;
         display: flex;
-        gap: 1rem;
+        gap: 16px;
         justify-content: space-between;
+        padding: 16px;
       }
 
-      .resume-links {
+      .resume-row p {
+        font-size: 0.88rem;
+        margin-top: 6px;
+      }
+
+      .resume-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem;
+        gap: 10px;
       }
 
-      .site-footer {
-        border-top: 1px solid var(--line);
+      .contact-links {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .contact-link {
+        background: var(--surface);
+        border-radius: 9999px;
+        color: var(--text);
+        font-size: 0.88rem;
+        font-weight: 700;
+        padding: 12px 16px;
+      }
+
+      .contact-link:hover {
+        background: var(--surface-hover);
+      }
+
+      .player-bar {
+        align-items: center;
+        background: #000000;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        bottom: 0;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        left: 0;
+        min-height: 80px;
+        padding: 12px 16px;
+        position: fixed;
+        right: 0;
+        z-index: 10;
+      }
+
+      .now-playing {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .now-playing img {
+        border-radius: 4px;
+        height: 52px;
+        object-fit: cover;
+        width: 52px;
+      }
+
+      .now-playing strong,
+      .now-playing span {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .now-playing strong {
+        color: var(--text);
+        font-size: 0.88rem;
+      }
+
+      .now-playing span {
         color: var(--muted);
-        padding: 1.4rem 1.25rem;
+        font-size: 0.75rem;
       }
 
-      .site-footer p {
-        margin: 0 auto;
-        max-width: var(--max-width);
+      .bar-actions {
+        display: flex;
+        gap: 10px;
       }
 
-      @media (max-width: 760px) {
-        .site-header {
-          position: static;
-        }
-
-        .nav {
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        .nav-links {
-          justify-content: flex-start;
-        }
-
-        .hero {
-          padding-top: 2.5rem;
-        }
-
-        h1 {
-          font-size: 3rem;
-        }
-
-        h2 {
-          font-size: 1.65rem;
-        }
-
-        .lead {
-          font-size: 1.1rem;
-        }
-
-        .hero-grid,
-        .section-heading,
-        .two-column,
-        .skill-list {
+      @media (max-width: 1024px) {
+        .app-shell {
           grid-template-columns: 1fr;
         }
 
-        .profile-panel {
-          max-width: 340px;
+        .sidebar {
+          align-items: center;
+          border-right: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          flex-direction: row;
+          height: auto;
+          position: static;
         }
 
-        .resume-panel {
+        .nav-list {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        .sidebar-note {
+          display: none;
+        }
+
+        .hero {
+          grid-template-columns: 184px minmax(0, 1fr);
+        }
+
+        .skill-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 700px) {
+        body {
+          padding-bottom: 0;
+        }
+
+        .content {
+          padding: 16px;
+        }
+
+        .sidebar {
           align-items: flex-start;
           flex-direction: column;
+          padding: 16px;
+        }
+
+        .hero {
+          align-items: start;
+          grid-template-columns: 1fr;
+          min-height: 0;
+          padding: 16px;
+        }
+
+        .profile-art {
+          width: 176px;
+        }
+
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .card-grid,
+        .skill-grid,
+        .contact-links {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .track {
+          grid-template-columns: 28px minmax(0, 1fr);
+        }
+
+        .track-meta {
+          display: none;
+        }
+
+        .resume-row {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .player-bar {
+          position: static;
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -402,183 +617,203 @@
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
 
-    <header class="site-header">
-      <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="#top">Ryu Dongwoo</a>
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#skills">Skills</a>
-          <a href="#resume">Resume</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-    </header>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Site navigation">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">R</span>
+          <span>Ryu Dongwoo</span>
+        </a>
 
-    <main id="main">
-      <section class="hero" id="top" aria-labelledby="intro-title">
-        <div class="hero-grid">
-          <div>
-            <p class="eyebrow">Computer Science Undergraduate</p>
-            <h1 id="intro-title">Ryu Dongwoo</h1>
-            <p class="lead">
-              I study low-level systems: computer architecture, operating
-              systems, compilers, and graphics/rendering. I like building small,
-              concrete implementations that make the abstractions visible.
-            </p>
-            <div class="actions" aria-label="Primary links">
-              <a class="button primary" href="cv.html">View CV</a>
-              <a class="button secondary" href="mailto:yudongu0521@gmail.com"
-                >Email me</a
-              >
-            </div>
+        <nav aria-label="Primary navigation">
+          <div class="nav-list">
+            <a href="#top" aria-current="page">Profile</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#resume">CV</a>
+            <a href="#contact">Contact</a>
           </div>
+        </nav>
 
-          <aside class="profile-panel" aria-label="Profile summary">
+        <div class="sidebar-note">
+          <strong>Now studying</strong>
+          <span>OS internals, compilers, processor datapaths, and rendering.</span>
+        </div>
+      </aside>
+
+      <main id="main">
+        <div class="content">
+          <section class="hero" id="top" aria-labelledby="intro-title">
             <img
+              class="profile-art"
               src="assets/profile.jpg"
               alt="Portrait of Ryu Dongwoo"
               width="736"
               height="736"
             />
-            <div class="profile-meta">
-              <p><strong>Based in</strong> South Korea</p>
-              <p><strong>Direction</strong> Graphics/rendering and kernels</p>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section" id="about" aria-labelledby="about-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="about-title">About</h2>
-            <p>
-              I am building toward deep systems expertise, from HDL and
-              processor datapaths through operating-system internals, compilers,
-              and rendering. Completed mandatory military service.
-            </p>
-          </div>
-          <div class="two-column">
-            <article class="item">
-              <h3>Current Focus</h3>
-              <p>
-                OS internals with xv6, compilers through
-                <em>Crafting Interpreters</em>, and Scheme via SICP.
-              </p>
-            </article>
-            <article class="item">
-              <h3>Working Style</h3>
-              <p>
-                Practice-first learning: small implementations, careful reading,
-                and direct experiments over passive study.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="education" aria-labelledby="education-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="education-title">Education</h2>
-            <p>
-              Undergraduate in Computer Science at Seoul National University,
-              2022-2028.
-            </p>
-          </div>
-          <article class="item">
-            <h3>Relevant Coursework</h3>
-            <p class="muted">
-              Computer Architecture, Algorithms, Object-Oriented Programming,
-              Digital / Hardware Design, ML Systems &amp; Hardware
-              Accelerators, Physics.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="skills" aria-labelledby="skills-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="skills-title">Skills</h2>
-            <p>
-              Tools and languages I use for systems, hardware, and practical
-              software work.
-            </p>
-          </div>
-          <ul class="skill-list">
-            <li>
-              <strong>Languages</strong>
-              C++, Java, Python, C for systems work, and Scheme.
-            </li>
-            <li>
-              <strong>Hardware / HDL</strong>
-              Amaranth HDL, digital logic, FSM and datapath design.
-            </li>
-            <li>
-              <strong>Systems &amp; Tools</strong>
-              Linux, Arch, Neovim, Git, and Unity.
-            </li>
-            <li>
-              <strong>Interests</strong>
-              Graphics/rendering engineering and kernel-level systems work.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section" id="resume" aria-labelledby="resume-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="resume-title">CV</h2>
-            <p>
-              The CV is available as a UTF-8 HTML page for browsers, with the
-              original Markdown file kept in the repository.
-            </p>
-          </div>
-          <div class="resume-panel">
             <div>
-              <h3>Curriculum Vitae</h3>
-              <p class="muted">
-                Open the formatted CV for contact details, education, skills,
-                and project notes.
+              <p class="eyebrow">Personal profile</p>
+              <h1 id="intro-title">Ryu Dongwoo</h1>
+              <p class="lead">
+                Computer Science undergraduate focused on low-level systems:
+                computer architecture, operating systems, compilers, and
+                graphics/rendering.
               </p>
+              <div class="meta-row" aria-label="Profile details">
+                <span><strong>Based in</strong> South Korea</span>
+                <span>Computer Science, Seoul National University</span>
+              </div>
+              <div class="actions" aria-label="Primary links">
+                <a class="button primary" href="cv.html">View CV</a>
+                <a class="button secondary" href="mailto:yudongu0521@gmail.com"
+                  >Email</a
+                >
+              </div>
             </div>
-            <div class="resume-links" aria-label="CV links">
-              <a class="button primary" href="cv.html">Open CV</a>
-              <a class="button secondary" href="assets/cv.md">Raw Markdown</a>
+          </section>
+
+          <section class="section" id="about" aria-labelledby="about-title">
+            <div class="section-head">
+              <h2 id="about-title">About</h2>
+              <p>Systems practice from hardware up through software.</p>
             </div>
-          </div>
-        </div>
-      </section>
+            <div class="card-grid">
+              <article class="card">
+                <span class="tag">Current focus</span>
+                <h3>Low-level systems</h3>
+                <p>
+                  HDL, processor datapaths, operating-system internals,
+                  compilers, and rendering.
+                </p>
+              </article>
+              <article class="card">
+                <span class="tag">Working style</span>
+                <h3>Practice-first learning</h3>
+                <p>
+                  Small implementations, careful reading, and direct experiments
+                  over passive study.
+                </p>
+              </article>
+            </div>
+          </section>
 
-      <section class="section" id="contact" aria-labelledby="contact-title">
-        <div class="section-inner">
-          <div class="section-heading">
-            <h2 id="contact-title">Contact</h2>
-            <p>
-              Reach out by email or GitHub. Outside software, I am interested in
-              judo and wrestling, classical Greek tragedy, continental
-              philosophy, and Vocaloid music composition.
-            </p>
-          </div>
-          <ul class="contact-list">
-            <li>
-              Email:
-              <a href="mailto:yudongu0521@gmail.com">yudongu0521@gmail.com</a>
-            </li>
-            <li>
-              GitHub:
-              <a href="https://github.com/deserted335">github.com/deserted335</a>
-            </li>
-          </ul>
-        </div>
-      </section>
-    </main>
+          <section
+            class="section"
+            id="education"
+            aria-labelledby="education-title"
+          >
+            <div class="section-head">
+              <h2 id="education-title">Education</h2>
+              <p>Academic track and relevant coursework.</p>
+            </div>
+            <div class="track-list" role="list">
+              <article class="track" role="listitem">
+                <span class="track-number">1</span>
+                <div>
+                  <div class="track-title">Undergraduate in Computer Science</div>
+                  <div class="track-subtitle">
+                    Seoul National University, 2022-2028
+                  </div>
+                </div>
+                <span class="track-meta">SNU</span>
+              </article>
+              <article class="track" role="listitem">
+                <span class="track-number">2</span>
+                <div>
+                  <div class="track-title">Relevant coursework</div>
+                  <div class="track-subtitle">
+                    Computer Architecture, Algorithms, OOP, Digital / Hardware
+                    Design, ML Systems &amp; Hardware Accelerators, Physics.
+                  </div>
+                </div>
+                <span class="track-meta">Core</span>
+              </article>
+            </div>
+          </section>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Ryu Dongwoo. Built as a static GitHub Pages site.</p>
+          <section class="section" id="skills" aria-labelledby="skills-title">
+            <div class="section-head">
+              <h2 id="skills-title">Skills</h2>
+              <p>Tools and languages in active use.</p>
+            </div>
+            <div class="skill-grid">
+              <article class="skill-card">
+                <strong>Languages</strong>
+                <span>C++, Java, Python, C for systems work, Scheme.</span>
+              </article>
+              <article class="skill-card">
+                <strong>Hardware / HDL</strong>
+                <span>Amaranth HDL, digital logic, FSM and datapath design.</span>
+              </article>
+              <article class="skill-card">
+                <strong>Systems &amp; Tools</strong>
+                <span>Linux, Arch, Neovim, Git, Unity.</span>
+              </article>
+              <article class="skill-card">
+                <strong>Currently learning</strong>
+                <span>xv6, Crafting Interpreters, SICP.</span>
+              </article>
+            </div>
+          </section>
+
+          <section class="section" id="resume" aria-labelledby="resume-title">
+            <div class="section-head">
+              <h2 id="resume-title">CV</h2>
+              <p>Formatted HTML plus the original Markdown source.</p>
+            </div>
+            <div class="resume-row">
+              <div>
+                <h3>Curriculum Vitae</h3>
+                <p>
+                  Contact details, education, skills, direction, and project
+                  placeholders.
+                </p>
+              </div>
+              <div class="resume-actions" aria-label="CV links">
+                <a class="button primary" href="cv.html">Open CV</a>
+                <a class="button secondary" href="assets/cv.md">Markdown</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="section-head">
+              <h2 id="contact-title">Contact</h2>
+              <p>Email and GitHub.</p>
+            </div>
+            <div class="contact-links">
+              <a class="contact-link" href="mailto:yudongu0521@gmail.com"
+                >yudongu0521@gmail.com</a
+              >
+              <a class="contact-link" href="https://github.com/deserted335"
+                >github.com/deserted335</a
+              >
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <footer class="player-bar">
+      <div class="now-playing">
+        <img
+          src="assets/profile.jpg"
+          alt=""
+          width="52"
+          height="52"
+          aria-hidden="true"
+        />
+        <div>
+          <strong>Ryu Dongwoo</strong>
+          <span>Low-level systems, graphics/rendering, and kernels</span>
+        </div>
+      </div>
+      <div class="bar-actions" aria-label="Footer links">
+        <a class="button primary" href="cv.html">CV</a>
+        <a class="button secondary" href="mailto:yudongu0521@gmail.com"
+          >Contact</a
+        >
+      </div>
     </footer>
   </body>
 </html>

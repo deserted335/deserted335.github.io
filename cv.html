@@ -10,15 +10,23 @@
     <title>CV | Ryu Dongwoo</title>
     <style>
       :root {
-        --bg: #f8faf9;
-        --surface: #ffffff;
-        --text: #15211e;
-        --muted: #596964;
-        --line: #d7e1de;
-        --accent: #087f76;
-        --accent-strong: #075e57;
-        --accent-warm: #b6462f;
-        --max-width: 860px;
+        --bg: #121212;
+        --surface: #181818;
+        --surface-raised: #1f1f1f;
+        --surface-hover: #252525;
+        --text: #ffffff;
+        --muted: #b3b3b3;
+        --muted-strong: #cbcbcb;
+        --line: #4d4d4d;
+        --accent: #1ed760;
+        --accent-pressed: #1db954;
+        --shadow-heavy: rgba(0, 0, 0, 0.5) 0 8px 24px;
+        --shadow-medium: rgba(0, 0, 0, 0.3) 0 8px 8px;
+        --max-width: 920px;
+        --font-stack: SpotifyMixUI, CircularSp-Arab, CircularSp-Hebr,
+          CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, "Helvetica Neue",
+          helvetica, arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+          Meiryo, "MS Gothic", sans-serif;
       }
 
       * {
@@ -29,37 +37,75 @@
         margin: 0;
         background: var(--bg);
         color: var(--text);
-        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: var(--font-stack);
         font-size: 16px;
-        line-height: 1.65;
+        line-height: 1.45;
       }
 
       a {
-        color: var(--accent-strong);
-        text-decoration-thickness: 0.09em;
-        text-underline-offset: 0.2em;
+        color: var(--text);
+        text-decoration: none;
       }
 
       a:hover {
-        color: var(--accent-warm);
+        color: var(--accent);
       }
 
       a:focus-visible {
-        outline: 3px solid rgba(8, 127, 118, 0.35);
-        outline-offset: 4px;
-        border-radius: 6px;
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 9999px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1.2;
+      }
+
+      h3 {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0;
+        line-height: 1.3;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+      }
+
+      strong {
+        color: var(--text);
       }
 
       .skip-link {
         position: absolute;
-        left: 1rem;
-        top: 1rem;
-        transform: translateY(-160%);
-        background: var(--text);
-        color: #ffffff;
-        padding: 0.65rem 0.85rem;
-        text-decoration: none;
+        left: 16px;
+        top: 16px;
+        transform: translateY(-150%);
+        background: var(--accent);
+        color: #000000;
+        font-size: 0.88rem;
+        font-weight: 700;
+        padding: 8px 16px;
+        text-transform: uppercase;
+        letter-spacing: 1.6px;
       }
 
       .skip-link:focus {
@@ -69,96 +115,138 @@
       .page {
         margin: 0 auto;
         max-width: var(--max-width);
-        padding: 2rem 1.25rem 3rem;
+        padding: 24px;
       }
 
       .top-nav {
         align-items: center;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem;
+        gap: 10px;
         justify-content: space-between;
-        margin-bottom: 2rem;
+        margin-bottom: 16px;
       }
 
-      .top-nav a {
-        font-weight: 800;
+      .nav-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .button {
+        align-items: center;
+        border-radius: 9999px;
+        display: inline-flex;
+        font-size: 0.88rem;
+        font-weight: 700;
+        justify-content: center;
+        letter-spacing: 1.6px;
+        min-height: 40px;
+        padding: 8px 16px;
+        text-transform: uppercase;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #000000;
+      }
+
+      .button.primary:hover {
+        background: var(--accent-pressed);
+        color: #000000;
+      }
+
+      .button.secondary {
+        background: var(--surface-raised);
+        box-shadow: #7c7c7c 0 0 0 1px inset;
+        color: var(--text);
+      }
+
+      .button.secondary:hover {
+        background: var(--surface-hover);
+        color: var(--text);
       }
 
       header {
+        align-items: center;
         background: var(--surface);
-        border: 1px solid var(--line);
         border-radius: 8px;
-        padding: 1.4rem;
+        box-shadow: var(--shadow-heavy);
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 120px minmax(0, 1fr);
+        padding: 18px;
       }
 
-      h1,
-      h2,
-      h3,
-      p {
-        margin-top: 0;
+      .avatar {
+        aspect-ratio: 1;
+        border-radius: 6px;
+        box-shadow: var(--shadow-medium);
+        object-fit: cover;
+        width: 100%;
       }
 
-      h1 {
-        font-size: 3rem;
-        letter-spacing: 0;
-        line-height: 1;
-        margin-bottom: 0.75rem;
-      }
-
-      h2 {
-        border-bottom: 1px solid var(--line);
-        font-size: 1.45rem;
-        letter-spacing: 0;
-        line-height: 1.25;
-        margin-bottom: 1rem;
-        padding-bottom: 0.45rem;
-      }
-
-      h3 {
-        font-size: 1rem;
-        line-height: 1.35;
-        margin-bottom: 0.25rem;
+      .eyebrow {
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-transform: uppercase;
       }
 
       .summary {
-        color: var(--muted);
-        font-size: 1.12rem;
-        margin-bottom: 0;
+        color: var(--muted-strong);
+        font-size: 1rem;
+        margin-top: 12px;
       }
 
       .contact {
-        color: var(--muted);
         display: flex;
         flex-wrap: wrap;
-        gap: 0.35rem 0.75rem;
+        gap: 8px 12px;
         list-style: none;
-        margin: 1rem 0 0;
+        margin: 14px 0 0;
         padding: 0;
       }
 
+      .contact li {
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
       section {
-        margin-top: 2rem;
+        margin-top: 24px;
+      }
+
+      .section-title {
+        margin-bottom: 12px;
+      }
+
+      .panel {
+        background: var(--surface);
+        border-radius: 8px;
+        padding: 16px;
+      }
+
+      .panel + .panel {
+        margin-top: 12px;
+      }
+
+      .panel:hover {
+        background: var(--surface-hover);
+      }
+
+      .panel p {
+        margin-top: 6px;
       }
 
       ul {
         margin: 0;
-        padding-left: 1.2rem;
+        padding-left: 18px;
       }
 
       li + li {
-        margin-top: 0.35rem;
-      }
-
-      .item {
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 1rem;
-      }
-
-      .item + .item {
-        margin-top: 0.9rem;
+        margin-top: 6px;
       }
 
       .muted {
@@ -166,29 +254,34 @@
       }
 
       .footer-links {
-        border-top: 1px solid var(--line);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem 1rem;
-        margin-top: 2rem;
-        padding-top: 1rem;
+        gap: 10px;
+        margin-top: 24px;
+        padding-top: 16px;
       }
 
       @media (max-width: 640px) {
         .page {
-          padding-top: 1.25rem;
+          padding: 16px;
+        }
+
+        header {
+          grid-template-columns: 1fr;
+        }
+
+        .avatar {
+          width: 128px;
         }
 
         h1 {
           font-size: 2.35rem;
         }
 
-        h2 {
-          font-size: 1.3rem;
-        }
-
-        .summary {
-          font-size: 1rem;
+        .top-nav {
+          align-items: flex-start;
+          flex-direction: column;
         }
       }
     </style>
@@ -198,43 +291,66 @@
 
     <main class="page" id="main">
       <nav class="top-nav" aria-label="CV navigation">
-        <a href="index.html">Back to home</a>
-        <a href="assets/cv.md">Raw Markdown CV</a>
+        <a class="button secondary" href="index.html">Home</a>
+        <div class="nav-actions">
+          <a class="button primary" href="mailto:yudongu0521@gmail.com"
+            >Email</a
+          >
+          <a class="button secondary" href="assets/cv.md">Markdown</a>
+        </div>
       </nav>
 
       <header>
-        <h1>Ryu Dongwoo</h1>
-        <p class="summary">
-          Computer Science undergraduate focused on low-level systems:
-          computer architecture, operating systems, compilers, and
-          graphics/rendering.
-        </p>
-        <ul class="contact" aria-label="Contact details">
-          <li>South Korea</li>
-          <li><a href="mailto:yudongu0521@gmail.com">yudongu0521@gmail.com</a></li>
-          <li><a href="https://github.com/deserted335">github.com/deserted335</a></li>
-        </ul>
+        <img
+          class="avatar"
+          src="assets/profile.jpg"
+          alt="Portrait of Ryu Dongwoo"
+          width="736"
+          height="736"
+        />
+        <div>
+          <p class="eyebrow">Curriculum vitae</p>
+          <h1>Ryu Dongwoo</h1>
+          <p class="summary">
+            Computer Science undergraduate focused on low-level systems:
+            computer architecture, operating systems, compilers, and
+            graphics/rendering.
+          </p>
+          <ul class="contact" aria-label="Contact details">
+            <li>South Korea</li>
+            <li>
+              <a href="mailto:yudongu0521@gmail.com">yudongu0521@gmail.com</a>
+            </li>
+            <li>
+              <a href="https://github.com/deserted335"
+                >github.com/deserted335</a
+              >
+            </li>
+          </ul>
+        </div>
       </header>
 
       <section aria-labelledby="about-title">
-        <h2 id="about-title">About</h2>
-        <p>
-          I am a CS undergraduate building toward deep systems expertise,
-          working from the metal up through HDL and processor datapaths,
-          operating-system internals, compilers, and rendering. I care about
-          understanding how things work beneath the abstraction, and I prefer
-          practice over theory: small, hands-on implementations over passive
-          reading. Completed mandatory military service.
-        </p>
-        <p>
-          <strong>Long-term direction:</strong> graphics/rendering engineering
-          and kernel-level systems work.
-        </p>
+        <h2 class="section-title" id="about-title">About</h2>
+        <div class="panel">
+          <p>
+            I am a CS undergraduate building toward deep systems expertise,
+            working from the metal up through HDL and processor datapaths,
+            operating-system internals, compilers, and rendering. I care about
+            understanding how things work beneath the abstraction, and I prefer
+            practice over theory: small, hands-on implementations over passive
+            reading. Completed mandatory military service.
+          </p>
+          <p>
+            <strong>Long-term direction:</strong> graphics/rendering engineering
+            and kernel-level systems work.
+          </p>
+        </div>
       </section>
 
       <section aria-labelledby="education-title">
-        <h2 id="education-title">Education</h2>
-        <article class="item">
+        <h2 class="section-title" id="education-title">Education</h2>
+        <article class="panel">
           <h3>Undergraduate in Computer Science</h3>
           <p class="muted">Seoul National University, 2022-2028</p>
           <p>
@@ -246,42 +362,56 @@
       </section>
 
       <section aria-labelledby="skills-title">
-        <h2 id="skills-title">Skills</h2>
-        <div class="item">
+        <h2 class="section-title" id="skills-title">Skills</h2>
+        <div class="panel">
           <ul>
-            <li><strong>Languages:</strong> C++, Java, Python, C for systems work, Scheme.</li>
-            <li><strong>Hardware / HDL:</strong> Amaranth HDL, digital logic, FSM and datapath design.</li>
-            <li><strong>Systems &amp; Tools:</strong> Linux, Arch, Neovim, Git, Unity.</li>
-            <li><strong>Currently learning:</strong> OS internals with xv6, compilers through Crafting Interpreters, SICP.</li>
+            <li>
+              <strong>Languages:</strong> C++, Java, Python, C for systems
+              work, Scheme.
+            </li>
+            <li>
+              <strong>Hardware / HDL:</strong> Amaranth HDL, digital logic, FSM
+              and datapath design.
+            </li>
+            <li>
+              <strong>Systems &amp; Tools:</strong> Linux, Arch, Neovim, Git,
+              Unity.
+            </li>
+            <li>
+              <strong>Currently learning:</strong> OS internals with xv6,
+              compilers through Crafting Interpreters, SICP.
+            </li>
           </ul>
         </div>
       </section>
 
       <section aria-labelledby="projects-title">
-        <h2 id="projects-title">Projects</h2>
-        <p class="muted">
-          Project details can be added here as the CV is updated.
-        </p>
+        <h2 class="section-title" id="projects-title">Projects</h2>
+        <div class="panel">
+          <p class="muted">Project details can be added as the CV is updated.</p>
+        </div>
       </section>
 
       <section aria-labelledby="activities-title">
-        <h2 id="activities-title">Activities</h2>
-        <p class="muted">
-          Activity details can be added here as the CV is updated.
-        </p>
+        <h2 class="section-title" id="activities-title">Activities</h2>
+        <div class="panel">
+          <p class="muted">Activity details can be added as the CV is updated.</p>
+        </div>
       </section>
 
       <section aria-labelledby="interests-title">
-        <h2 id="interests-title">Interests</h2>
-        <p>
-          Beyond software: judo and wrestling, classical Greek tragedy and
-          continental philosophy, and Vocaloid music composition.
-        </p>
+        <h2 class="section-title" id="interests-title">Interests</h2>
+        <div class="panel">
+          <p>
+            Beyond software: judo and wrestling, classical Greek tragedy and
+            continental philosophy, and Vocaloid music composition.
+          </p>
+        </div>
       </section>
 
       <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="assets/cv.md">Raw Markdown source</a>
+        <a class="button primary" href="index.html">Home</a>
+        <a class="button secondary" href="assets/cv.md">Markdown source</a>
       </div>
     </main>
   </body>
