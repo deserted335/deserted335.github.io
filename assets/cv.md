@@ -47,6 +47,23 @@ I'm a CS undergraduate building toward deep systems expertise — working from t
 
 ## Projects
 
+### Object-Oriented Programming Course Project
+
+Course project focused on object modeling, responsibility boundaries, and maintainable implementation.
+
+### Hardware / System Design Project
+
+Course project connected to digital logic, finite-state machines, datapath thinking, and HDL-oriented design.
+
+---
+
+## Next Courses
+
+- **Operating Systems:** kernel structure, process management, memory, and file systems.
+- **Compilers:** parsing, intermediate representation, optimization, and code generation.
+- **Computer Graphics:** rendering fundamentals, geometry, shading, and visual computation.
+- **Advanced Computer Architecture:** processor organization, performance, and hardware / software interaction.
+
 ---
 
 ## Activities
