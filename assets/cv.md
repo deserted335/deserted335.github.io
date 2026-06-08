@@ -66,6 +66,14 @@ Course project connected to digital logic, finite-state machines, datapath think
 
 ---
 
+## AI Usage
+
+**Tools:** Codex.
+
+**Prompt summary:** Build a simple responsive personal website, use the profile image and CV, fix Markdown encoding with a UTF-8 CV page, apply the Spotify-inspired design system, and add projects, next courses, and this AI usage disclosure.
+
+---
+
 ## Activities
 
 ---
